@@ -114,14 +114,8 @@ div.tela-flashcards div.container-flashcards{
     flex-direction: column;
 }
 
-div.container-flashcards div.flashcards{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 div.flashcard{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -145,7 +139,7 @@ div.flashcard-fechado div{
 
 div.flashcard-aberto-frente{
     width: 85%;
-    height: 130px;
+    height: 150px;
     border-radius: 5px;
     padding: 18px;
     margin-bottom: 25px;
@@ -168,7 +162,7 @@ div.flashcard-aberto-frente img{
 
 div.flashcard-aberto-tras{
     width: 85%;
-    height: 130px;
+    height: 150px;
     border-radius: 5px;
     padding: 18px;
     margin-bottom: 25px;
@@ -178,7 +172,7 @@ div.flashcard-aberto-tras{
 div.flashcard-aberto-tras p{
     color: #333333;
     font-size: 18px;
-    height: 40px;
+    height: 60px;
 }
 
 div.flashcard-aberto-tras div{
@@ -215,9 +209,44 @@ div.flashcard-aberto-tras .button3{
     background-color: #2FBE34;
 }
 
-ion-icon[name="play-outline"]{
-    font-size: 23px;
+ion-icon{
+    font-size: 25px;
     cursor: pointer;
+}
+
+ion-icon[name="checkmark-circle"]{
+    color: #2FBE34;
+}
+
+ion-icon[name="help-circle"]{
+    color: #FF922E;
+}
+
+ion-icon[name="close-circle"]{
+    color: #FF3030;
+}
+
+.resposta{
+    font-weight: bold;
+    color: #333333;
+}
+
+.resposta-correta{
+    text-decoration: line-through;
+    color: #2FBE34;
+    font-weight: bold;
+}
+
+.resposta-quase{
+    text-decoration: line-through;
+    color: #FF922E;
+    font-weight: bold;
+}
+
+.resposta-errada{
+    text-decoration: line-through;
+    color: #FF3030;
+    font-weight: bold;
 }
 
 /* FOOTER */
@@ -228,12 +257,31 @@ div.tela-flashcards div.footer{
     bottom: 0;
     left: 0;
     background-color: #FFF;
-    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+div.fimJogoRuim{
+    text-align: center;
+    margin: 15px 0px;
+}
+
+div.fimJogoBom{
+    text-align: center;
+    margin: 15px 0px;
 }
 
 div.footer p{
     font-size: 18px;
+    line-height: 25px;
+}
+
+div.footer p.quantConcluido{
+    margin-top: 15px;
+}
+
+div.footer div{
+    margin: 15px 0px;
 }
