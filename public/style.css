@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body{
+    font-family: 'Recursive', sans-serif;
+    background-color: #FB6B6B;
+}
+
+div.root{
+    width: 100%;
+    height: 100%;
+}
+
+.escondido{
+    display: none;
+}
+
+/* ESTILOS TELA INICIAL */
+
+div.tela-inicial{
+    width: 100%;
+    height: 100%;
+}
+
+div.tela-inicial div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.tela-inicial img{
+    width: 136px;
+    margin-bottom: 15px;
+}
+
+div.tela-inicial h1{
+    font-family: 'Righteous', cursive;
+    font-size: 36px;
+    color: #FFF;
+    margin-bottom: 30px;
+}
+
+div.tela-inicial button{
+    width: 246px;
+    height: 54px;
+    border: 1px solid #D70900;
+    border-radius: 5px;
+    background-color: #FFF;
+    color: #D70900;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+div.tela-inicial button:hover{
+    background-color: #D70900;
+    color: #FFF;
+}
+
+/* ESTILOS TELA flashcard */
+
+div.tela-flashcards{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+/* HEADE */
+
+div.tela-flashcards div.header{
+    background-color: #FB6B6B;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+div.header img{
+    width: 52px;
+    margin-right: 25px;
+}
+
+div.header h2{
+    font-family: 'Righteous', cursive;
+    font-size: 36px;
+    color: #FFF;
+}
+
+/* CONTAINER flashcardS */
+
+div.tela-flashcards div.container-flashcards{
+    margin-top: 110px;
+    margin-bottom: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+div.container-flashcards div.flashcards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.flashcard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.flashcard-fechado{
+    background-color: #FFF;
+    width: 85%;
+    border-radius: 5px;
+    padding: 0 18px;
+    margin-bottom: 25px;
+}
+
+div.flashcard-fechado div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 65px;
+}
+
+div.flashcard-aberto-frente{
+    width: 85%;
+    height: 130px;
+    border-radius: 5px;
+    padding: 18px;
+    margin-bottom: 25px;
+    background-color: #FFFFD4;
+    position: relative;
+}
+
+div.flashcard-aberto-frente p{
+    color: #333333;
+    font-size: 18px;
+}
+
+div.flashcard-aberto-frente img{
+    width: 22px;
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    cursor: pointer;
+}
+
+div.flashcard-aberto-tras{
+    width: 85%;
+    height: 130px;
+    border-radius: 5px;
+    padding: 18px;
+    margin-bottom: 25px;
+    background-color: #FFFFD4;
+}
+
+div.flashcard-aberto-tras p{
+    color: #333333;
+    font-size: 18px;
+    height: 40px;
+}
+
+div.flashcard-aberto-tras div{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div.flashcard-aberto-tras button{
+    width: 85px;
+    height: 37px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #FFF;
+}
+
+div.flashcard-aberto-tras button:hover{
+    border: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+div.flashcard-aberto-tras .button1{
+    background-color: #FF3030;
+}
+
+div.flashcard-aberto-tras .button2{
+    background-color: #FF922E;
+}
+
+div.flashcard-aberto-tras .button3{
+    background-color: #2FBE34;
+}
+
+ion-icon[name="play-outline"]{
+    font-size: 23px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+
+div.tela-flashcards div.footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #FFF;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.footer p{
+    font-size: 18px;
+}
