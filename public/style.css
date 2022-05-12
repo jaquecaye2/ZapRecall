@@ -107,7 +107,7 @@ div.header h2{
 
 div.tela-flashcards div.container-flashcards{
     margin-top: 110px;
-    margin-bottom: 70px;
+    margin-bottom: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -135,6 +135,14 @@ div.flashcard-fechado div{
     align-items: center;
     justify-content: space-between;
     height: 65px;
+}
+
+div.flashcard-aberto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
 }
 
 div.flashcard-aberto-frente{
@@ -280,8 +288,9 @@ div.footer p{
 
 div.footer p.quantConcluido{
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 
-div.footer div{
-    margin: 15px 0px;
+div.footer div.container-icones{
+    margin-bottom: 15px;
 }

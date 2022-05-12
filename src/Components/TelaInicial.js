@@ -1,10 +1,10 @@
-export default function TelaInicial() {
+export default function TelaInicial({setTela}) {
     return (
-        <div className="tela-inicial escondido">
+        <div className="tela-inicial">
             <div>
                 <img src="images/logo.png" />
                 <h1>ZapRecall</h1>
-                <button>Iniciar Recall!</button>
+                <button onClick={() => setTela('telaFlashcard')}>Iniciar Recall!</button>
             </div>
         </div>
     )

@@ -1,34 +1,19 @@
+import React from 'react';
+
+import FlashcardFechado from './FlashcardFechado.js';
+import FlashcardAberto from './FlashcardAberto.js';
+
 function Flashcard(props) {
+    const [estadoFlashcard, setEstadoFlashcard] = React.useState("flashcardFechado")
 
     return (
         <div className="flashcard">
-            <div className="flashcard-fechado ">
-                <div>
-                    {/* Inicial: resposta
-                        Após respondido o card: resposta-correta | resposta-quase | resposta-errada */}
-                    <p className='resposta'>Pergunta {props.numPergunta}</p>
-                    {/* Inicial: play-outline
-                        Após respondido o card: checkmark-circle | help-circle | close-circle */}
-                    <ion-icon name="play-outline"></ion-icon>
-                </div>
-            </div>
-            <div className="flashcard-aberto-frente ">
-                <p>
-                    {props.pergunta}
-                </p>
-                <img src="images/setinha.png" />
-            </div>
-            <div className="flashcard-aberto-tras ">
-                <p>{props.resposta}</p>
-                <div>
-                    <button className="button1">Não lembrei</button>
-                    <button className="button2">Quase não lembrei</button>
-                    <button className="button3">Zap!</button>
-                </div>
-            </div>
+            {
+                estadoFlashcard === 'flashcardFechado' ? <FlashcardFechado props={props} setEstadoFlashcard={setEstadoFlashcard}/> : <FlashcardAberto props={props}/>
+            }   
+     
         </div>
     )
-
 }
 
 export default function ContainerFlashcards() {
@@ -79,29 +64,6 @@ export default function ContainerFlashcards() {
         <>
             <div className="container-flashcards">
                 {flashcards.map((flashcard, index) => <Flashcard key={index} numPergunta={flashcard.numPergunta} pergunta={flashcard.pergunta} resposta={flashcard.resposta} />)}
-            </div>
-
-
-            <div className="footer">
-                <div className="fimJogoRuim escondido">
-                    <p>🥲 Putz...</p>
-                    <p>Ainda faltam alguns... Mas não desanime!</p>
-                </div>
-                <div className="fimJogoBom escondido">
-                    <p>🥳 Parabéns!</p>
-                    <p>Você não esqueceu de nenhum flashcard!</p>
-                </div>
-                <p className="quantConcluido">8/8 CONCLUÍDOS</p>
-                <div className="container-icones">
-                    <ion-icon name="checkmark-circle"></ion-icon>
-                    <ion-icon name="close-circle"></ion-icon>
-                    <ion-icon name="help-circle"></ion-icon>
-                    <ion-icon name="checkmark-circle"></ion-icon>
-                    <ion-icon name="close-circle"></ion-icon>
-                    <ion-icon name="checkmark-circle"></ion-icon>
-                    <ion-icon name="help-circle"></ion-icon>
-                    <ion-icon name="checkmark-circle"></ion-icon>
-                </div>
             </div>
         </>
     )
