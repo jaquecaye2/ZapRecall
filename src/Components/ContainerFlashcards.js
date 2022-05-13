@@ -8,22 +8,22 @@ function Flashcard(props) {
 
     // criar contador para cada tipo de resposta,
 
-    function perguntaRespondidaCerta(){
-        setEstadoFlashcard("flashcardFechado") 
-        setEstadoResposta("resposta-correta") 
-        setIconeResposta("checkmark-circle") 
+    function perguntaRespondidaCerta() {
+        setEstadoFlashcard("flashcardFechado")
+        setEstadoResposta("resposta-correta")
+        setIconeResposta("checkmark-circle")
     }
 
-    function perguntaRespondidaMeio(){
-        setEstadoFlashcard("flashcardFechado") 
-        setEstadoResposta("resposta-quase") 
-        setIconeResposta("help-circle") 
+    function perguntaRespondidaMeio() {
+        setEstadoFlashcard("flashcardFechado")
+        setEstadoResposta("resposta-quase")
+        setIconeResposta("help-circle")
     }
 
-    function perguntaRespondidaErrada(){
-        setEstadoFlashcard("flashcardFechado") 
-        setEstadoResposta("resposta-errada") 
-        setIconeResposta("close-circle") 
+    function perguntaRespondidaErrada() {
+        setEstadoFlashcard("flashcardFechado")
+        setEstadoResposta("resposta-errada")
+        setIconeResposta("close-circle")
     }
 
     return (
@@ -34,41 +34,37 @@ function Flashcard(props) {
                 estadoFlashcard === 'flashcardFechado' ? (
                     <div className="flashcard-fechado ">
                         <div>
-                            {/* Inicial: resposta
-                        Após respondido o card: resposta-correta | resposta-quase | resposta-errada */}
-                            <p className={estadoResposta}>Pergunta {props.key}</p>
-                            {/* Inicial: play-outline
-                        Após respondido o card: checkmark-circle | help-circle | close-circle */}
+                            <p className={estadoResposta}>Pergunta {props.numPergunta + 1}</p>
                             <ion-icon name={iconeResposta} onClick={() => setEstadoFlashcard("flashcardAberto")}></ion-icon>
                         </div>
                     </div>
-                ) : 
-                (
-                    <div className="flashcard-aberto">
-                        {/*OPERADOR TERNÁRIO PARA VERIFICAR SE O CARD ABERTO ESTA NA FRENTE OU ATRÁS*/}
-                        {
-                            estadoFLashcardAberto === 'frente'
-                                ?
-                                (<div className="flashcard-aberto-frente ">
-                                    <p>
-                                        {props.pergunta}
-                                    </p>
-                                    <img src="images/setinha.png" onClick={() => setEstadoFlashcardAberto("tras")} />
-                                </div>)
-                                :
-                                (
-                                    <div className="flashcard-aberto-tras ">
-                                        <p>{props.resposta}</p>
-                                        <div>
-                                            <button className="button1" onClick={perguntaRespondidaErrada}>Não lembrei</button>
-                                            <button className="button2" onClick={perguntaRespondidaMeio}>Quase não lembrei</button>
-                                            <button className="button3" onClick={perguntaRespondidaCerta} >Zap!</button>
+                ) :
+                    (
+                        <div className="flashcard-aberto">
+                            {/*OPERADOR TERNÁRIO PARA VERIFICAR SE O CARD ABERTO ESTA NA FRENTE OU ATRÁS*/}
+                            {
+                                estadoFLashcardAberto === 'frente'
+                                    ?
+                                    (<div className="flashcard-aberto-frente ">
+                                        <p>
+                                            {props.pergunta}
+                                        </p>
+                                        <img src="images/setinha.png" onClick={() => setEstadoFlashcardAberto("tras")} />
+                                    </div>)
+                                    :
+                                    (
+                                        <div className="flashcard-aberto-tras ">
+                                            <p>{props.resposta}</p>
+                                            <div>
+                                                <button className="button1" onClick={perguntaRespondidaErrada}>Não lembrei</button>
+                                                <button className="button2" onClick={perguntaRespondidaMeio}>Quase não lembrei</button>
+                                                <button className="button3" onClick={perguntaRespondidaCerta} >Zap!</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                )
-                        }
-                    </div>
-                )
+                                    )
+                            }
+                        </div>
+                    )
             }
 
         </div>
@@ -111,8 +107,8 @@ export default function ContainerFlashcards() {
         }
     ]
 
-    function comparador() { 
-        return Math.random() - 0.5; 
+    function comparador() {
+        return Math.random() - 0.5;
     }
 
     flashcards.sort(comparador)
@@ -120,7 +116,30 @@ export default function ContainerFlashcards() {
     return (
         <>
             <div className="container-flashcards">
-                {flashcards.map((flashcard, index) => <Flashcard key={index} pergunta={flashcard.pergunta} resposta={flashcard.resposta} />)}
+                {flashcards.map((flashcard, index) => <Flashcard key={index} numPergunta={index} pergunta={flashcard.pergunta} resposta={flashcard.resposta}/>)}
+            </div>
+
+
+            <div className="footer">
+                <div className="fimJogoRuim escondido">
+                    <p>🥲 Putz...</p>
+                    <p>Ainda faltam alguns... Mas não desanime!</p>
+                </div>
+                <div className="fimJogoBom escondido">
+                    <p>🥳 Parabéns!</p>
+                    <p>Você não esqueceu de nenhum flashcard!</p>
+                </div>
+                <p className="quantConcluido">0/{flashcards.length} CONCLUÍDOS</p>
+                <div className="container-icones">
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                    <ion-icon name="close-circle"></ion-icon>
+                    <ion-icon name="help-circle"></ion-icon>
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                    <ion-icon name="close-circle"></ion-icon>
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                    <ion-icon name="help-circle"></ion-icon>
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                </div>
             </div>
         </>
     )

@@ -9,7 +9,7 @@ export default function Footer() {
                 <p>🥳 Parabéns!</p>
                 <p>Você não esqueceu de nenhum flashcard!</p>
             </div>
-            <p className="quantConcluido">8/8 CONCLUÍDOS</p>
+            <p className="quantConcluido">0/8 CONCLUÍDOS</p>
             <div className="container-icones">
                 <ion-icon name="checkmark-circle"></ion-icon>
                 <ion-icon name="close-circle"></ion-icon>
