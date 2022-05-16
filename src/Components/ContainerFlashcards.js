@@ -1,5 +1,4 @@
 import React from 'react';
-
 import setinha from "../assets/images/setinha.png"
 
 function Flashcard(props) {
@@ -79,24 +78,6 @@ function Flashcard(props) {
                     )
             }
 
-        </div>
-    )
-}
-
-function RespostaBoa() {
-    return (
-        <div className="fimJogoBom">
-            <p>🥳 Parabéns!</p>
-            <p>Você não esqueceu de nenhum flashcard!</p>
-        </div>
-    )
-}
-
-function RespostaRuim() {
-    return (
-        <div className="fimJogoRuim">
-            <p>🥲 Putz...</p>
-            <p>Ainda faltam alguns... Mas não desanime!</p>
         </div>
     )
 }
