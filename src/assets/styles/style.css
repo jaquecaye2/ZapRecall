@@ -156,6 +156,7 @@ div.flashcard-aberto-frente{
 }
 
 div.flashcard-aberto-frente p{
+    margin: 0;
     color: #333333;
     font-size: 18px;
 }
@@ -178,6 +179,7 @@ div.flashcard-aberto-tras{
 }
 
 div.flashcard-aberto-tras p{
+    margin: 0;
     color: #333333;
     font-size: 18px;
     height: 60px;

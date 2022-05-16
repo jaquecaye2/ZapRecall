@@ -1,29 +1,41 @@
 import React from 'react';
 
+import setinha from "../assets/images/setinha.png"
+
 function Flashcard(props) {
     const [estadoFlashcard, setEstadoFlashcard] = React.useState("flashcardFechado")
     const [estadoFLashcardAberto, setEstadoFlashcardAberto] = React.useState("frente")
     const [estadoResposta, setEstadoResposta] = React.useState("resposta")
     const [iconeResposta, setIconeResposta] = React.useState("play-outline")
 
-    // criar contador para cada tipo de resposta,
-
     function perguntaRespondidaCerta() {
         setEstadoFlashcard("flashcardFechado")
         setEstadoResposta("resposta-correta")
         setIconeResposta("checkmark-circle")
+        novoIcone("checkmark-circle")
+        props.setContadorRespondidas(props.contadorRespondidas + 1)
     }
 
     function perguntaRespondidaMeio() {
         setEstadoFlashcard("flashcardFechado")
         setEstadoResposta("resposta-quase")
         setIconeResposta("help-circle")
+        novoIcone("help-circle")
+        props.setContadorRespondidas(props.contadorRespondidas + 1)
     }
 
     function perguntaRespondidaErrada() {
         setEstadoFlashcard("flashcardFechado")
         setEstadoResposta("resposta-errada")
         setIconeResposta("close-circle")
+        novoIcone("close-circle")
+        props.setContadorRespondidas(props.contadorRespondidas + 1)
+        props.setContadorErradas(props.contadorErradas + 1)
+    }
+
+    function novoIcone(icone) {
+        const novosIcones = [...props.iconesRespondida, icone]
+        props.setIconesRespondidas(novosIcones)
     }
 
     return (
@@ -49,7 +61,7 @@ function Flashcard(props) {
                                         <p>
                                             {props.pergunta}
                                         </p>
-                                        <img src="images/setinha.png" onClick={() => setEstadoFlashcardAberto("tras")} />
+                                        <img src={setinha} onClick={() => setEstadoFlashcardAberto("tras")} />
                                     </div>)
                                     :
                                     (
@@ -67,6 +79,24 @@ function Flashcard(props) {
                     )
             }
 
+        </div>
+    )
+}
+
+function RespostaBoa() {
+    return (
+        <div className="fimJogoBom">
+            <p>🥳 Parabéns!</p>
+            <p>Você não esqueceu de nenhum flashcard!</p>
+        </div>
+    )
+}
+
+function RespostaRuim() {
+    return (
+        <div className="fimJogoRuim">
+            <p>🥲 Putz...</p>
+            <p>Ainda faltam alguns... Mas não desanime!</p>
         </div>
     )
 }
@@ -113,32 +143,39 @@ export default function ContainerFlashcards() {
 
     flashcards.sort(comparador)
 
+    const [iconesRespondida, setIconesRespondidas] = React.useState([])
+    const [contadorRespondidas, setContadorRespondidas] = React.useState(0)
+    const [contadorErradas, setContadorErradas] = React.useState(0)
+
+    let renderizarFinal
+
+    if (contadorRespondidas === flashcards.length) {
+        renderizarFinal = (contadorErradas === 0 ?
+            (<div className="fimJogoBom">
+                <p>🥳 Parabéns!</p>
+                <p>Você não esqueceu de nenhum flashcard!</p>
+            </div>)
+            : (
+                <div className="fimJogoRuim">
+                    <p>🥲 Putz...</p>
+                    <p>Ainda faltam alguns... Mas não desanime!</p>
+                </div>
+            )
+        )
+    }
+
     return (
         <>
             <div className="container-flashcards">
-                {flashcards.map((flashcard, index) => <Flashcard key={index} numPergunta={index} pergunta={flashcard.pergunta} resposta={flashcard.resposta}/>)}
+                {flashcards.map((flashcard, index) => <Flashcard key={index} numPergunta={index} pergunta={flashcard.pergunta} resposta={flashcard.resposta} iconesRespondida={iconesRespondida} setIconesRespondidas={setIconesRespondidas} contadorRespondidas={contadorRespondidas} setContadorRespondidas={setContadorRespondidas} contadorErradas={contadorErradas} setContadorErradas={setContadorErradas} />)}
             </div>
 
 
             <div className="footer">
-                <div className="fimJogoRuim escondido">
-                    <p>🥲 Putz...</p>
-                    <p>Ainda faltam alguns... Mas não desanime!</p>
-                </div>
-                <div className="fimJogoBom escondido">
-                    <p>🥳 Parabéns!</p>
-                    <p>Você não esqueceu de nenhum flashcard!</p>
-                </div>
-                <p className="quantConcluido">0/{flashcards.length} CONCLUÍDOS</p>
+                {renderizarFinal}
+                <p className="quantConcluido">{contadorRespondidas}/{flashcards.length} CONCLUÍDOS</p>
                 <div className="container-icones">
-                    <ion-icon name="checkmark-circle"></ion-icon>
-                    <ion-icon name="close-circle"></ion-icon>
-                    <ion-icon name="help-circle"></ion-icon>
-                    <ion-icon name="checkmark-circle"></ion-icon>
-                    <ion-icon name="close-circle"></ion-icon>
-                    <ion-icon name="checkmark-circle"></ion-icon>
-                    <ion-icon name="help-circle"></ion-icon>
-                    <ion-icon name="checkmark-circle"></ion-icon>
+                    {iconesRespondida.map(icone => <ion-icon name={icone}></ion-icon>)}
                 </div>
             </div>
         </>
